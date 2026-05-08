@@ -13,19 +13,19 @@ export default function HeroSection() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Copy */}
         <div className="text-left">
-          <div className={`${fade('delay-0')} inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-100 text-sm font-medium text-emerald-600 mb-10`}>
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          <div className={`${fade('delay-0')} inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-100 text-sm font-medium text-brand-primary mb-10`}>
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-primary animate-pulse" />
             Expiry-First Dinner Engine
           </div>
 
-          <h1 className={`${fade('delay-100')} text-4xl sm:text-5xl md:text-[56px] font-extrabold tracking-tight leading-[1.1] text-gray-900 mb-6`}>
+          <h1 className={`${fade('delay-100')} text-4xl sm:text-5xl md:text-[56px] font-extrabold tracking-tight leading-[1.1] text-text-heading mb-6`}>
             Savor{' '}
-            <span className="text-emerald-500">Freshness,</span>
+            <span className="text-brand-primary">Freshness,</span>
             <br />
             Every Bite
           </h1>
 
-          <p className={`${fade('delay-200')} text-base md:text-lg leading-relaxed text-gray-500 max-w-md pb-8`}>
+          <p className={`${fade('delay-200')} text-base md:text-lg leading-relaxed text-text-body max-w-md pb-8`}>
             EcoSnap turns your expiring groceries into tonight's dinner — saving
             you money, reducing waste, and ending the daily "what should I cook?" panic.
           </p>
@@ -33,14 +33,14 @@ export default function HeroSection() {
           <div className={`${fade('delay-300')} flex flex-wrap gap-3`}>
             <a
               href="#cta"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-emerald-500 border border-transparent text-white text-base font-semibold shadow-lg shadow-emerald-500/20 hover:bg-emerald-600 hover:-translate-y-0.5 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-brand-primary border border-transparent text-white text-base font-semibold shadow-lg shadow-brand-primary/20 hover:bg-emerald-600 hover:-translate-y-0.5 transition-all duration-300"
             >
               Start for Free
               <ArrowRight size={18} />
             </a>
             <a
               href="#how-it-works"
-              className="inline-flex items-center px-7 py-3.5 rounded-full border border-gray-200 text-gray-600 text-base font-semibold hover:border-emerald-200 hover:text-emerald-600 transition-all duration-300"
+              className="inline-flex items-center px-7 py-3.5 rounded-full border border-gray-200 text-gray-600 text-base font-semibold hover:border-emerald-200 hover:text-brand-primary transition-all duration-300"
             >
               See How It Works
             </a>
@@ -69,10 +69,10 @@ export default function HeroSection() {
         ].map((stat, i) => (
           <div key={i} className="p-[1px] rounded-2xl bg-gradient-to-br from-emerald-200 via-gray-100 to-teal-200">
             <div className="text-center p-6 rounded-[15px] bg-white h-full">
-              <span className={`block text-2xl md:text-3xl font-extrabold tracking-tight mb-1 ${stat.highlight ? 'text-emerald-500' : 'text-gray-900'}`}>
+              <span className={`block text-2xl md:text-3xl font-extrabold tracking-tight mb-1 ${stat.highlight ? 'text-brand-primary' : 'text-text-heading'}`}>
                 {stat.value}
               </span>
-              <span className="text-xs text-gray-400">{stat.label}</span>
+              <span className="text-xs text-text-muted">{stat.label}</span>
             </div>
           </div>
         ))}

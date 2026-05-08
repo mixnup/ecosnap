@@ -11,11 +11,11 @@ export default function PricingSection() {
           ref={ref}
           className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-7'}`}
         >
-          <p className="text-xs font-semibold uppercase tracking-[1.5px] text-emerald-600 mb-5">Pricing</p>
-          <h2 className="text-3xl md:text-[42px] font-bold text-gray-900 tracking-tight leading-tight mb-4">
+          <p className="text-xs font-semibold uppercase tracking-[1.5px] text-brand-primary mb-5">Pricing</p>
+          <h2 className="text-3xl md:text-[42px] font-bold text-text-heading tracking-tight leading-tight mb-4">
             Pay for what you use
           </h2>
-          <p className="text-base md:text-lg text-gray-500 leading-relaxed">
+          <p className="text-base md:text-lg text-text-body leading-relaxed">
             No subscriptions. No lock-in. Buy Sachet credits when you need premium features.
           </p>
         </div>

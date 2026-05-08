@@ -11,7 +11,7 @@ export default function ProblemSection() {
   const { ref, isVisible } = useReveal();
 
   return (
-    <section className="px-5 md:px-12 py-24 md:py-32 bg-gray-50">
+    <section className="px-5 md:px-12 py-24 md:py-32 bg-surface-alt">
       <div
         ref={ref}
         className={`max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center transition-all duration-700 ${
@@ -19,19 +19,19 @@ export default function ProblemSection() {
         }`}
       >
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[1.5px] text-emerald-600 mb-5">The Problem</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight leading-tight mb-5">
+          <p className="text-xs font-semibold uppercase tracking-[1.5px] text-brand-primary mb-5">The Problem</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-text-heading tracking-tight leading-tight mb-5">
             You buy.<br />
             You forget.<br />
-            <span className="text-emerald-500">You throw away.</span><br />
+            <span className="text-brand-primary">You throw away.</span><br />
             Repeat.
           </h2>
-          <p className="text-base leading-relaxed text-gray-500 mb-4">
-            The average household wastes <span className="text-gray-900 font-semibold">$1,500 in groceries</span> every
+          <p className="text-base leading-relaxed text-text-body mb-4">
+            The average household wastes <span className="text-text-heading font-semibold">$1,500 in groceries</span> every
             year. Cluttered pantry trackers and generic recipe apps ignore the one thing that matters:
           </p>
-          <p className="text-lg font-semibold text-gray-900 italic">
-            "What's about to expire, and what can I cook with it <span className="text-emerald-500">tonight</span>?"
+          <p className="text-lg font-semibold text-text-heading italic">
+            "What's about to expire, and what can I cook with it <span className="text-brand-primary">tonight</span>?"
           </p>
         </div>
 
@@ -43,8 +43,8 @@ export default function ProblemSection() {
                   <card.icon size={22} />
                 </div>
                 <div>
-                  <h4 className="text-[15px] font-semibold text-gray-900 mb-1">{card.title}</h4>
-                  <p className="text-sm text-gray-400">{card.desc}</p>
+                  <h4 className="text-[15px] font-semibold text-text-heading mb-1">{card.title}</h4>
+                  <p className="text-sm text-text-muted">{card.desc}</p>
                 </div>
               </div>
             </div>

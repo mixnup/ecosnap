@@ -5,7 +5,7 @@ export default function CTASection() {
   const { ref, isVisible } = useReveal();
 
   return (
-    <section id="cta" className="relative px-5 md:px-12 py-24 md:py-32 bg-emerald-500 overflow-hidden">
+    <section id="cta" className="relative px-5 md:px-12 py-24 md:py-32 bg-brand-primary overflow-hidden">
       {/* Decorative circles */}
       <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-emerald-400/30 blur-3xl" />
       <div className="absolute -bottom-20 -left-20 w-60 h-60 rounded-full bg-emerald-600/30 blur-3xl" />
@@ -25,7 +25,7 @@ export default function CTASection() {
           </p>
           <a
             href="#"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-emerald-600 text-base font-bold shadow-lg hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-brand-primary text-base font-bold shadow-lg hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300"
           >
             Get Started — It's Free
             <ArrowRight size={18} />

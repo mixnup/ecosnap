@@ -7,6 +7,25 @@
   --color-brand-accent: #14b8a6;    /* Teal 500 — complementary accent for highlights */
   --color-brand-warm: #f59e0b;      /* Amber 500 — urgency badges & warning states */
   --color-brand-surface: #f8fafc;   /* Slate 50 — light background surfaces */
+
+  /* ── Semantic Colors ── */
+  --color-success: #10b981;         /* Emerald 500 — confirmations, completed states */
+  --color-success-light: #d1fae5;   /* Emerald 100 — success backgrounds */
+  --color-warning: #f59e0b;         /* Amber 500 — approaching expiry, caution states */
+  --color-warning-light: #fef3c7;   /* Amber 100 — warning backgrounds */
+  --color-danger: #ef4444;          /* Red 500 — expired items, destructive actions */
+  --color-danger-light: #fee2e2;    /* Red 100 — danger backgrounds */
+  --color-info: #3b82f6;            /* Blue 500 — tips, informational notices */
+  --color-info-light: #dbeafe;      /* Blue 100 — info backgrounds */
+
+  /* ── Text ── */
+  --color-text-heading: #111827;    /* Gray 900 — headings, strong labels */
+  --color-text-body: #6b7280;       /* Gray 500 — body text, descriptions */
+  --color-text-muted: #9ca3af;      /* Gray 400 — captions, placeholders */
+
+  /* ── Borders & Surfaces ── */
+  --color-border: #f3f4f6;          /* Gray 100 — card dividers, section borders */
+  --color-surface-alt: #f9fafb;     /* Gray 50 — alternating section backgrounds */
 }
 
 :root {

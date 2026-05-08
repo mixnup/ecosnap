@@ -17,11 +17,11 @@ export default function HowItWorksSection() {
           ref={ref}
           className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-7'}`}
         >
-          <p className="text-xs font-semibold uppercase tracking-[1.5px] text-emerald-600 mb-5">How It Works</p>
-          <h2 className="text-3xl md:text-[42px] font-bold text-gray-900 tracking-tight leading-tight mb-4">
+          <p className="text-xs font-semibold uppercase tracking-[1.5px] text-brand-primary mb-5">How It Works</p>
+          <h2 className="text-3xl md:text-[42px] font-bold text-text-heading tracking-tight leading-tight mb-4">
             Three steps to zero waste
           </h2>
-          <p className="text-base md:text-lg text-gray-500 leading-relaxed">
+          <p className="text-base md:text-lg text-text-body leading-relaxed">
             From grocery bag to dinner plate — in under a minute.
           </p>
         </div>
@@ -31,13 +31,13 @@ export default function HowItWorksSection() {
             <div key={step.num} className="p-[1px] rounded-2xl bg-gradient-to-br from-emerald-200 via-gray-100 to-teal-200 transition-all duration-300 hover:-translate-y-1.5">
               <div className="relative p-10 rounded-[15px] bg-white h-full text-center">
                 <div className="w-14 h-14 rounded-2xl bg-emerald-50 flex items-center justify-center mx-auto mb-6">
-                  <step.icon size={26} className="text-emerald-500" />
+                  <step.icon size={26} className="text-brand-primary" />
                 </div>
-                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-emerald-500 text-white text-xs font-bold mb-4">
+                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-brand-primary text-white text-xs font-bold mb-4">
                   {step.num}
                 </span>
-                <h3 className="text-xl font-bold text-gray-900 tracking-tight mb-3">{step.title}</h3>
-                <p className="text-sm leading-relaxed text-gray-500">{step.desc}</p>
+                <h3 className="text-xl font-bold text-text-heading tracking-tight mb-3">{step.title}</h3>
+                <p className="text-sm leading-relaxed text-text-body">{step.desc}</p>
               </div>
             </div>
           ))}
