@@ -28,6 +28,22 @@ npm run <script-name>
 node scripts/your-script.js
 ```
 
+## Available Scripts
+
+### 1. Seed Inventory
+`npm run seed:inventory -- <UID> <COUNT>`
+
+Populates a user's inventory sub-collection with mock data. Useful for testing UI performance with large datasets or verifying triage logic.
+
+*   **UID**: The target user's Firebase UID.
+*   **COUNT**: Number of items to generate (default: 50).
+
+**Example:**
+```bash
+# Seed 500 items for a specific user
+npm run seed:inventory -- my-user-id-123 500
+```
+
 ## Adding New Scripts
 
 To maintain a clean and standardized environment for administrative tasks, follow these steps:

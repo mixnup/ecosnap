@@ -1,20 +1,28 @@
-import { Clock, AlertTriangle } from 'lucide-react';
-import type { ExpiringItem } from '../../types/recipe';
-
-export type InventoryItem = ExpiringItem & {
-  id: string;
-  expiryHours: number;
-};
+import { Clock, AlertTriangle, Trash2 } from 'lucide-react';
+import { toast } from 'sonner';
+import { useInventory } from '../../context/InventoryContext';
+import type { InventoryItem } from '../../types/inventory';
 
 interface InventoryCardProps {
   item: InventoryItem;
 }
 
 export default function InventoryCard({ item }: InventoryCardProps) {
+  const { removeItem } = useInventory();
   const isCritical = item.expiryHours <= 24;
   const isWarning = item.expiryHours > 24 && item.expiryHours <= 48;
 
+  const handleRemove = async () => {
+    try {
+      await removeItem(item.id);
+      toast.success(`${item.name} removed`);
+    } catch (error) {
+      toast.error("Failed to remove item");
+    }
+  };
+
   let dotClass = 'bg-emerald-500';
+// ... rest of logic stays same
   let textClass = 'text-emerald-700';
   let bgClass = 'bg-emerald-50';
   let borderClass = 'border-emerald-100';
@@ -40,9 +48,18 @@ export default function InventoryCard({ item }: InventoryCardProps) {
         </div>
         
         {/* Modern sleek badge */}
-        <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full ${bgClass} border ${borderClass}`}>
-          <span className={`w-1.5 h-1.5 rounded-full ${dotClass} ${isCritical ? 'animate-pulse' : ''}`} />
-          <span className={`text-[10px] font-extrabold uppercase tracking-[1px] ${textClass}`}>{item.expiryHours}h left</span>
+        <div className="flex items-center gap-2">
+          <button 
+            onClick={handleRemove}
+            className="p-1.5 rounded-lg text-gray-300 hover:text-red-500 hover:bg-red-50 transition-all opacity-0 group-hover:opacity-100"
+            title="Remove item"
+          >
+            <Trash2 size={16} />
+          </button>
+          <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full ${bgClass} border ${borderClass}`}>
+            <span className={`w-1.5 h-1.5 rounded-full ${dotClass} ${isCritical ? 'animate-pulse' : ''}`} />
+            <span className={`text-[10px] font-extrabold uppercase tracking-[1px] ${textClass}`}>{item.expiryHours}h left</span>
+          </div>
         </div>
       </div>
       

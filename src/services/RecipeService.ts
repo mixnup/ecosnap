@@ -31,6 +31,19 @@ class RecipeService {
       throw error;
     }
   }
+
+  /**
+   * Pings the health check endpoint to wake up the server.
+   */
+  async checkHealth(): Promise<boolean> {
+    try {
+      const response = await fetch(`${API_BASE_URL}/health`);
+      return response.ok;
+    } catch (error) {
+      console.error("Health check failed:", error);
+      return false;
+    }
+  }
 }
 
 export const recipeService = new RecipeService();

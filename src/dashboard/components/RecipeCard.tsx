@@ -69,7 +69,9 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
                 <span className="w-5 h-5 shrink-0 rounded flex items-center justify-center bg-gray-50 border border-gray-200 text-[10px] font-bold text-gray-400 mt-0.5">
                   {i + 1}
                 </span>
-                <span className="pt-0.5 leading-snug">{ing}</span>
+                <span className="pt-0.5 leading-snug">
+                  {typeof ing === 'string' ? ing : `${(ing as any).quantity || ''} ${(ing as any).unit || ''} ${(ing as any).name}`.trim()}
+                </span>
               </li>
             ))}
           </ul>
