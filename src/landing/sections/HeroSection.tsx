@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import heroImage from '../../assets/pexels-justindoherty-4929671.jpg';
 
 export default function HeroSection() {
+  const { user } = useAuth();
   const [show, setShow] = useState(false);
   useEffect(() => { setShow(true); }, []);
 
@@ -32,13 +35,13 @@ export default function HeroSection() {
           </p>
 
           <div className={`${fade('delay-300')} flex flex-wrap gap-3`}>
-            <a
-              href="#cta"
+            <Link
+              to={user ? "/dashboard" : "/login"}
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-brand-primary border border-transparent text-white text-base font-semibold shadow-lg shadow-brand-primary/20 hover:bg-emerald-600 hover:-translate-y-0.5 transition-all duration-300"
             >
-              Start for Free
+              {user ? "Go to Dashboard" : "Start for Free"}
               <ArrowRight size={18} />
-            </a>
+            </Link>
             <a
               href="#how-it-works"
               className="inline-flex items-center px-7 py-3.5 rounded-full border border-gray-200 text-gray-600 text-base font-semibold hover:border-emerald-200 hover:text-brand-primary transition-all duration-300"

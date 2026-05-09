@@ -1,7 +1,16 @@
-import { Outlet, NavLink } from 'react-router-dom';
-import { Home, List, Receipt, Plus } from 'lucide-react';
+import { Outlet, NavLink, useNavigate } from 'react-router-dom';
+import { Home, List, Receipt, Plus, LogOut } from 'lucide-react';
+import { useAuth } from '../../context/AuthContext';
 
 export default function DashboardLayout() {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logout();
+    navigate('/');
+  };
+
   return (
     <div className="min-h-screen bg-brand-surface flex">
       {/* Sidebar - Elevated with subtle depth and clean borders */}
@@ -51,7 +60,7 @@ export default function DashboardLayout() {
         </nav>
 
         {/* User / Sachet Balance - Premium Card Look */}
-        <div className="p-6">
+        <div className="p-6 space-y-4">
            <div className="relative p-5 rounded-2xl bg-gradient-to-br from-emerald-500 via-emerald-600 to-teal-600 text-white shadow-xl shadow-emerald-500/25 overflow-hidden group">
              {/* Decorative background element */}
              <div className="absolute -top-12 -right-12 w-24 h-24 bg-white opacity-10 rounded-full blur-xl group-hover:scale-150 transition-transform duration-700" />
@@ -65,6 +74,30 @@ export default function DashboardLayout() {
                  </button>
                </div>
              </div>
+           </div>
+
+           {/* User Profile & Logout */}
+           <div className="flex items-center justify-between px-2 py-3 border-t border-gray-100">
+             <div className="flex items-center gap-3 min-w-0">
+               {user?.photoURL ? (
+                 <img src={user.photoURL} alt={user.displayName || 'User'} className="w-9 h-9 rounded-full border-2 border-emerald-50" />
+               ) : (
+                 <div className="w-9 h-9 rounded-full bg-emerald-100 flex items-center justify-center text-brand-primary font-bold">
+                   {user?.displayName?.charAt(0) || user?.email?.charAt(0) || 'U'}
+                 </div>
+               )}
+               <div className="min-w-0">
+                 <p className="text-xs font-bold text-text-heading truncate">{user?.displayName || 'Eco Warrior'}</p>
+                 <p className="text-[10px] text-text-muted truncate">{user?.email}</p>
+               </div>
+             </div>
+             <button 
+              onClick={handleLogout}
+              className="p-2 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 transition-all duration-300 group"
+              title="Logout"
+             >
+               <LogOut size={18} className="group-hover:translate-x-0.5 transition-transform" />
+             </button>
            </div>
         </div>
       </aside>
