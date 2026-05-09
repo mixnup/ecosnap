@@ -3,7 +3,7 @@ import { Leaf } from 'lucide-react';
 export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 px-5 md:px-12 py-4 bg-white/80 backdrop-blur-xl border-b border-border">
-      <div className="max-w-6xl mx-auto flex items-center justify-between">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
         <a href="/" className="flex items-center gap-2 text-xl font-bold text-text-heading tracking-tight">
           <span className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-brand-primary text-white">
             <Leaf size={18} />

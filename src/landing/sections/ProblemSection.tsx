@@ -14,7 +14,7 @@ export default function ProblemSection() {
     <section className="px-5 md:px-12 py-24 md:py-32 bg-surface-alt">
       <div
         ref={ref}
-        className={`max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center transition-all duration-700 ${
+        className={`max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center transition-all duration-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-7'
         }`}
       >

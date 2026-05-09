@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
+import heroImage from '../../assets/pexels-justindoherty-4929671.jpg';
 
 export default function HeroSection() {
   const [show, setShow] = useState(false);
@@ -10,7 +11,7 @@ export default function HeroSection() {
 
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 px-5 md:px-12 overflow-hidden bg-gradient-to-b from-emerald-50/50 to-white">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Copy */}
         <div className="text-left">
           <div className={`${fade('delay-0')} inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-100 text-sm font-medium text-brand-primary mb-10`}>
@@ -25,7 +26,7 @@ export default function HeroSection() {
             Every Bite
           </h1>
 
-          <p className={`${fade('delay-200')} text-base md:text-lg leading-relaxed text-text-body max-w-md pb-8`}>
+          <p className={`${fade('delay-200')} text-base md:text-lg leading-relaxed text-text-body max-w-xl pb-8`}>
             EcoSnap turns your expiring groceries into tonight's dinner — saving
             you money, reducing waste, and ending the daily "what should I cook?" panic.
           </p>
@@ -50,9 +51,9 @@ export default function HeroSection() {
         {/* Hero image placeholder */}
         <div className={`${fade('delay-500')} relative flex items-center justify-center`}>
           <div className="absolute inset-0 bg-emerald-100/40 rounded-full blur-3xl scale-90" />
-          <div className="relative w-full aspect-square max-w-md mx-auto rounded-full bg-gradient-to-br from-emerald-50 to-emerald-100 border border-emerald-100 flex items-center justify-center overflow-hidden shadow-2xl shadow-emerald-500/10">
+          <div className="relative w-full aspect-square max-w-xl mx-auto rounded-full bg-gradient-to-br from-emerald-50 to-emerald-100 border border-emerald-100 flex items-center justify-center overflow-hidden shadow-2xl shadow-emerald-500/10">
             <img
-              src="https://placehold.co/500x500/f0fdf4/16a34a?text=Fresh+Meal"
+              src={heroImage}
               alt="Fresh meal"
               className="w-[85%] h-[85%] object-cover rounded-full"
             />
@@ -61,7 +62,7 @@ export default function HeroSection() {
       </div>
 
       {/* Stats bar */}
-      <div className={`${fade('delay-700')} max-w-4xl mx-auto mt-20 grid grid-cols-1 sm:grid-cols-3 gap-6`}>
+      <div className={`${fade('delay-700')} max-w-6xl mx-auto mt-20 grid grid-cols-1 sm:grid-cols-3 gap-6`}>
         {[
           { value: '$1,500', label: 'avg. wasted per household / yr', highlight: true },
           { value: '219 lbs', label: 'of food thrown away per person' },
