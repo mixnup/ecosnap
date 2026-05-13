@@ -29,7 +29,7 @@ export default function DashboardLayout() {
       }`}>
         <div className="p-8 pb-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-[10px] bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center shadow-md shadow-emerald-500/20">
+            <div className="w-9 h-9 rounded-[10px] bg-linear-to-br from-emerald-400 to-emerald-600 flex items-center justify-center shadow-md shadow-emerald-500/20">
               <span className="text-white font-bold text-xl leading-none">E</span>
             </div>
             <span className="font-extrabold text-2xl tracking-tight text-text-heading">EcoSnap</span>
@@ -81,7 +81,7 @@ export default function DashboardLayout() {
 
         {/* User / Sachet Balance - Premium Card Look */}
         <div className="p-6 space-y-4">
-           <div className="relative p-5 rounded-2xl bg-gradient-to-br from-emerald-500 via-emerald-600 to-teal-600 text-white shadow-xl shadow-emerald-500/25 overflow-hidden group">
+           <div className="relative p-5 rounded-2xl bg-linear-to-br from-emerald-500 via-emerald-600 to-teal-600 text-white shadow-xl shadow-emerald-500/25 overflow-hidden group">
              {/* Decorative background element */}
              <div className="absolute -top-12 -right-12 w-24 h-24 bg-white opacity-10 rounded-full blur-xl group-hover:scale-150 transition-transform duration-700" />
              
