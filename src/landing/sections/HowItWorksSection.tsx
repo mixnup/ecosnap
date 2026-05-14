@@ -2,9 +2,9 @@ import { useReveal } from '../components/useReveal';
 import { ScanLine, ChefHat, Sparkles } from 'lucide-react';
 
 const steps = [
-  { num: '1', icon: ScanLine, title: 'Scan & Track', desc: 'Snap your grocery receipt or add items manually. We catalog everything with estimated expiry dates.' },
+  { num: '1', icon: ScanLine, title: 'Log & Track', desc: 'Add your groceries to the inventory. We help you categorize everything and track estimated expiry dates.' },
   { num: '2', icon: ChefHat, title: 'Get Triaged', desc: "At dinner time, we isolate what's about to expire and match it to recipes you can cook tonight." },
-  { num: '3', icon: Sparkles, title: 'Cook & Save', desc: 'Follow the recipe, tap "Cooked." See exactly how much you saved in dollars and carbon.' },
+  { num: '3', icon: Sparkles, title: 'Cook & Save', desc: 'Follow the recipe, tap "Cooked." See exactly how much you saved in dollars.' },
 ];
 
 export default function HowItWorksSection() {

@@ -5,8 +5,8 @@ import { Timer, UtensilsCrossed, ScanLine, Leaf } from 'lucide-react';
 const features = [
   { icon: Timer, title: 'Expiry-First Dashboard', description: "See what needs to be used NOW — not a cluttered pantry list. High-urgency items surface automatically so you never miss an expiry window." },
   { icon: UtensilsCrossed, title: 'Smart Dinner Triage', description: "One tap generates a recipe from your most urgent ingredients. No browsing, no searching — just tonight's dinner, decided." },
-  { icon: ScanLine, title: 'Receipt Scanner', description: 'Skip the manual entry grind. Snap a photo of your grocery receipt and we parse, categorize, and timestamp every item instantly.', badge: 'Premium' },
-  { icon: Leaf, title: 'Impact Receipts', description: 'After every meal, see exactly how much money you saved and the equivalent carbon offset. The feel-good loop that builds the daily habit.' },
+  { icon: ScanLine, title: 'Inventory Management', description: 'Easily log your items with precise expiry dates and categorize them to keep your kitchen organized.' },
+  { icon: Leaf, title: 'Savings Tracker', description: 'After every meal, see exactly how much money you saved by rescuing food. The feel-good loop that builds the daily habit.' },
 ];
 
 export default function FeaturesSection() {
