@@ -1,5 +1,5 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
-import { Home, List, Receipt, Plus, LogOut, Menu, X } from 'lucide-react';
+import { Home, List, LogOut, Menu, X } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useState } from 'react';
 
@@ -24,7 +24,7 @@ export default function DashboardLayout() {
       )}
       
       {/* Sidebar - Elevated with subtle depth and clean borders */}
-      <aside className={`fixed lg:static inset-y-0 left-0 z-30 w-64 bg-white/80 backdrop-blur-xl border-r border-gray-100 flex flex-col h-screen shadow-[4px_0_24px_rgba(0,0,0,0.02)] transform transition-transform duration-300 ease-in-out ${
+      <aside className={`fixed lg:sticky lg:top-0 inset-y-0 left-0 z-30 w-64 bg-white/80 backdrop-blur-xl border-r border-gray-100 flex flex-col h-screen shadow-[4px_0_24px_rgba(0,0,0,0.02)] transform transition-transform duration-300 ease-in-out ${
         isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
       }`}>
         <div className="p-8 pb-6 flex items-center justify-between">
@@ -46,8 +46,7 @@ export default function DashboardLayout() {
         <nav className="flex-1 px-4 space-y-1.5 mt-2">
           {[
             { to: "/dashboard", icon: Home, label: "Triage", end: true },
-            { to: "/dashboard/inventory", icon: List, label: "Inventory" },
-            { to: "/dashboard/receipts", icon: Receipt, label: "Scan Receipt" }
+            { to: "/dashboard/inventory", icon: List, label: "Inventory" }
           ].map(({ to, icon: Icon, label, end }) => (
             <NavLink 
               key={to}
@@ -79,24 +78,8 @@ export default function DashboardLayout() {
           ))}
         </nav>
 
-        {/* User / Sachet Balance - Premium Card Look */}
+        {/* User Profile & Logout */}
         <div className="p-6 space-y-4">
-           <div className="relative p-5 rounded-2xl bg-linear-to-br from-emerald-500 via-emerald-600 to-teal-600 text-white shadow-xl shadow-emerald-500/25 overflow-hidden group">
-             {/* Decorative background element */}
-             <div className="absolute -top-12 -right-12 w-24 h-24 bg-white opacity-10 rounded-full blur-xl group-hover:scale-150 transition-transform duration-700" />
-             
-             <div className="relative z-10">
-               <p className="text-[10px] font-bold uppercase tracking-[2px] text-emerald-100 mb-1">Sachets</p>
-               <div className="flex items-end justify-between">
-                 <span className="text-3xl font-extrabold tracking-tight">3</span>
-                 <button className="flex items-center justify-center w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 transition-colors backdrop-blur-sm">
-                   <Plus size={16} strokeWidth={3} className="text-white" />
-                 </button>
-               </div>
-             </div>
-           </div>
-
-           {/* User Profile & Logout */}
            <div className="flex items-center justify-between px-2 py-3 border-t border-gray-100">
              <div className="flex items-center gap-3 min-w-0">
                {user?.photoURL ? (

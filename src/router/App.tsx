@@ -5,6 +5,7 @@ import { InventoryProvider } from '../context/InventoryContext';
 import LandingPage from '../landing/pages/LandingPage';
 import DashboardLayout from '../dashboard/layouts/DashboardLayout';
 import DashboardPage from '../dashboard/pages/DashboardPage';
+import InventoryPage from '../dashboard/pages/InventoryPage';
 import NotFoundPage from '../landing/pages/NotFoundPage';
 import LoginPage from '../auth/pages/LoginPage';
 import ProtectedRoute from './ProtectedRoute';
@@ -23,7 +24,7 @@ function App() {
             <Route element={<ProtectedRoute />}>
               <Route path="/dashboard" element={<DashboardLayout />}>
                 <Route index element={<DashboardPage />} />
-                {/* Future routes will go here, e.g. /dashboard/inventory */}
+                <Route path="inventory" element={<InventoryPage />} />
               </Route>
             </Route>
   
