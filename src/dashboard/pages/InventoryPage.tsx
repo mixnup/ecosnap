@@ -12,8 +12,6 @@ import {
   AlertTriangle,
   Clock,
   Leaf,
-  LayoutGrid,
-  List as ListIcon,
 } from 'lucide-react';
 
 const ITEMS_PER_PAGE = 12;

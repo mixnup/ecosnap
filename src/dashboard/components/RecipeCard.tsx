@@ -1,9 +1,18 @@
 import type { Recipe } from '../../types/recipe';
-import { ChefHat, Clock, Leaf, DollarSign } from 'lucide-react';
+import { ChefHat, Clock, Leaf, DollarSign, AlertTriangle } from 'lucide-react';
 
 interface RecipeCardProps {
   recipe: Recipe;
 }
+
+const CATEGORY_LABELS: Record<string, { label: string; color: string }> = {
+  proteins: { label: 'Proteins', color: 'text-rose-600 bg-rose-50 border-rose-100' },
+  vegetables: { label: 'Vegetables', color: 'text-green-600 bg-green-50 border-green-100' },
+  starches: { label: 'Starches', color: 'text-amber-600 bg-amber-50 border-amber-100' },
+  dairy: { label: 'Dairy', color: 'text-blue-600 bg-blue-50 border-blue-100' },
+  pantry: { label: 'Pantry', color: 'text-orange-600 bg-orange-50 border-orange-100' },
+  misc: { label: 'Misc', color: 'text-gray-600 bg-gray-50 border-gray-100' },
+};
 
 export default function RecipeCard({ recipe }: RecipeCardProps) {
   return (
@@ -45,18 +54,56 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
             {recipe.difficulty}
           </div>
         </div>
-        {recipe.estimated_cost_saved !== undefined && (
-          <div className="flex-1 p-4 flex flex-col items-center justify-center bg-emerald-50/30">
-            <p className="text-[10px] font-bold uppercase tracking-[1.5px] text-emerald-600 mb-1">Saved</p>
-            <div className="flex items-center gap-0.5 font-extrabold text-emerald-700">
-              <DollarSign size={14} strokeWidth={2.5} />
-              {recipe.estimated_cost_saved.toFixed(2)}
-            </div>
+        <div className="flex-1 p-4 flex flex-col items-center justify-center bg-emerald-50/30">
+          <p className="text-[10px] font-bold uppercase tracking-[1.5px] text-emerald-600 mb-1">Saved</p>
+          <div className="flex items-center gap-0.5 font-extrabold text-emerald-700">
+            <DollarSign size={14} strokeWidth={2.5} />
+            {(recipe.estimated_cost_saved || 0).toFixed(2)}
           </div>
-        )}
+        </div>
       </div>
 
       <div className="p-6 md:p-8 space-y-8 bg-white">
+
+        {/* Urgent Items Warning */}
+        {recipe.urgent_items && recipe.urgent_items.length > 0 && (
+          <div className="flex items-start gap-3 p-4 rounded-xl bg-red-50 border border-red-100">
+            <AlertTriangle size={18} className="text-red-500 mt-0.5 shrink-0" />
+            <div>
+              <p className="text-xs font-bold text-red-700 uppercase tracking-wider mb-1">Urgent Items Used</p>
+              <p className="text-sm text-red-600 font-medium">
+                {recipe.urgent_items.map(item => item.name).join(', ')}
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* Categorized Items Breakdown */}
+        {recipe.categorized_items && (
+          <div>
+            <h4 className="flex items-center gap-2 font-bold text-text-heading mb-4 text-xs uppercase tracking-[2px]">
+              <span className="w-1.5 h-1.5 rounded-full bg-violet-500" />
+              Ingredient Breakdown
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {Object.entries(recipe.categorized_items).map(([key, items]) => {
+                if (!items || items.length === 0) return null;
+                const config = CATEGORY_LABELS[key] || CATEGORY_LABELS.misc;
+                return (
+                  <div
+                    key={key}
+                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-[11px] font-bold ${config.color}`}
+                  >
+                    {config.label}
+                    <span className="opacity-60">·</span>
+                    <span>{items.length}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
         {/* Ingredients */}
         <div>
           <h4 className="flex items-center gap-2 font-bold text-text-heading mb-4 text-xs uppercase tracking-[2px]">
@@ -64,7 +111,7 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
             Ingredients
           </h4>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-6">
-            {recipe.ingredients.map((ing, i) => (
+            {(recipe.ingredients || []).map((ing, i) => (
               <li key={i} className="flex items-start gap-3 text-sm text-text-body font-medium">
                 <span className="w-5 h-5 shrink-0 rounded flex items-center justify-center bg-gray-50 border border-gray-200 text-[10px] font-bold text-gray-400 mt-0.5">
                   {i + 1}
@@ -84,10 +131,10 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
             Instructions
           </h4>
           <ol className="space-y-5">
-            {recipe.instructions.map((step, i) => (
+            {(recipe.instructions || []).map((step, i) => (
               <li key={i} className="relative flex items-start gap-4 text-sm text-text-body group">
                 {/* Visual connecting line for steps */}
-                {i !== recipe.instructions.length - 1 && (
+                {i !== (recipe.instructions || []).length - 1 && (
                   <div className="absolute left-[13px] top-8 bottom-[-16px] w-[2px] bg-gray-100 group-hover:bg-emerald-100 transition-colors" />
                 )}
                 <span className="relative z-10 flex items-center justify-center w-7 h-7 shrink-0 rounded-full bg-white border-2 border-emerald-100 text-emerald-600 text-xs font-extrabold mt-0.5 group-hover:border-emerald-500 group-hover:bg-emerald-500 group-hover:text-white transition-all">
@@ -97,13 +144,6 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
               </li>
             ))}
           </ol>
-        </div>
-        
-        {/* Actions */}
-        <div className="pt-4 border-t border-gray-100">
-          <button className="w-full inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-gray-900 text-white text-base font-bold shadow-lg hover:bg-black hover:-translate-y-0.5 transition-all duration-300">
-            Complete & Log Savings
-          </button>
         </div>
       </div>
     </div>

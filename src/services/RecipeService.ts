@@ -5,8 +5,8 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 
 class RecipeService {
   /**
-   * Generates a dinner recipe based on expiring items.
-   * @param data - The list of expiring items and dietary restrictions.
+   * Generates dinner recipe(s) based on expiring items, pantry, and preferences.
+   * @param data - The triage request payload.
    * @returns A promise that resolves to the recipe response.
    */
   async triageDinner(data: RecipeTriageRequest): Promise<RecipeTriageResponse> {

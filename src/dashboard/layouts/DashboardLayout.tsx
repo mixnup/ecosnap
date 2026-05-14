@@ -1,5 +1,5 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
-import { Home, List, LogOut, Menu, X } from 'lucide-react';
+import { Home, List, ShoppingBasket, History, Settings, LogOut, Menu, X } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useState } from 'react';
 
@@ -46,7 +46,10 @@ export default function DashboardLayout() {
         <nav className="flex-1 px-4 space-y-1.5 mt-2">
           {[
             { to: "/dashboard", icon: Home, label: "Triage", end: true },
-            { to: "/dashboard/inventory", icon: List, label: "Inventory" }
+            { to: "/dashboard/inventory", icon: List, label: "Inventory" },
+            { to: "/dashboard/pantry", icon: ShoppingBasket, label: "Pantry" },
+            { to: "/dashboard/history", icon: History, label: "History" },
+            { to: "/dashboard/settings", icon: Settings, label: "Settings" }
           ].map(({ to, icon: Icon, label, end }) => (
             <NavLink 
               key={to}
