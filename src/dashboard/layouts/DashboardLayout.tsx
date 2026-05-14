@@ -1,10 +1,12 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
-import { Home, List, Receipt, Plus, LogOut } from 'lucide-react';
+import { Home, List, Receipt, Plus, LogOut, Menu, X } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import { useState } from 'react';
 
 export default function DashboardLayout() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleLogout = async () => {
     await logout();
@@ -12,16 +14,33 @@ export default function DashboardLayout() {
   };
 
   return (
-    <div className="min-h-screen bg-brand-surface flex">
+    <div className="min-h-screen bg-brand-surface flex relative">
+      {/* Mobile backdrop overlay */}
+      {isMobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-20 lg:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+      
       {/* Sidebar - Elevated with subtle depth and clean borders */}
-      <aside className="w-64 bg-white/80 backdrop-blur-xl border-r border-gray-100 flex flex-col sticky top-0 h-screen shadow-[4px_0_24px_rgba(0,0,0,0.02)] z-10">
-        <div className="p-8 pb-6">
+      <aside className={`fixed lg:static inset-y-0 left-0 z-30 w-64 bg-white/80 backdrop-blur-xl border-r border-gray-100 flex flex-col h-screen shadow-[4px_0_24px_rgba(0,0,0,0.02)] transform transition-transform duration-300 ease-in-out ${
+        isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+      }`}>
+        <div className="p-8 pb-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-[10px] bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center shadow-md shadow-emerald-500/20">
+            <div className="w-9 h-9 rounded-[10px] bg-linear-to-br from-emerald-400 to-emerald-600 flex items-center justify-center shadow-md shadow-emerald-500/20">
               <span className="text-white font-bold text-xl leading-none">E</span>
             </div>
             <span className="font-extrabold text-2xl tracking-tight text-text-heading">EcoSnap</span>
           </div>
+          {/* Mobile close button */}
+          <button 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="lg:hidden p-2 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors"
+          >
+            <X size={20} />
+          </button>
         </div>
         
         <nav className="flex-1 px-4 space-y-1.5 mt-2">
@@ -34,6 +53,7 @@ export default function DashboardLayout() {
               key={to}
               to={to} 
               end={end}
+              onClick={() => setIsMobileMenuOpen(false)}
               className={({ isActive }) => 
                 `flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 font-semibold text-sm relative overflow-hidden group ${
                   isActive 
@@ -61,7 +81,7 @@ export default function DashboardLayout() {
 
         {/* User / Sachet Balance - Premium Card Look */}
         <div className="p-6 space-y-4">
-           <div className="relative p-5 rounded-2xl bg-gradient-to-br from-emerald-500 via-emerald-600 to-teal-600 text-white shadow-xl shadow-emerald-500/25 overflow-hidden group">
+           <div className="relative p-5 rounded-2xl bg-linear-to-br from-emerald-500 via-emerald-600 to-teal-600 text-white shadow-xl shadow-emerald-500/25 overflow-hidden group">
              {/* Decorative background element */}
              <div className="absolute -top-12 -right-12 w-24 h-24 bg-white opacity-10 rounded-full blur-xl group-hover:scale-150 transition-transform duration-700" />
              
@@ -104,6 +124,16 @@ export default function DashboardLayout() {
 
       {/* Main Content */}
       <main className="flex-1 overflow-auto bg-gray-50/50">
+        {/* Mobile header with hamburger menu */}
+        <div className="lg:hidden sticky top-0 z-10 bg-white/80 backdrop-blur-xl border-b border-gray-100 px-4 py-3 flex items-center gap-3">
+          <button 
+            onClick={() => setIsMobileMenuOpen(true)}
+            className="p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
+          >
+            <Menu size={24} />
+          </button>
+          <span className="font-extrabold text-xl tracking-tight text-text-heading">EcoSnap</span>
+        </div>
         <Outlet />
       </main>
     </div>
